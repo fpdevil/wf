@@ -1,0 +1,24 @@
+name: Demo Workflow to test something...
+
+on:
+  push:
+    branches: 
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  StartJob:
+    name: Run on Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Test my stuff"
+
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: List files in a Repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
