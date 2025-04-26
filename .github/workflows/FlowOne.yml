@@ -10,7 +10,7 @@ on:
       ssd:
          description: 'The Solid State Drive on my Lappy'
          required: true
-      loglevel:
+      logLevel:
         description: 'Log Level'
         default: 'warning'
         type: choice
@@ -33,7 +33,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Test my stuff"
+      - run: |
+          echo "Running My Workflow"
+          echo "Machine SSD: ${{ inputs.ssd }}"
+          echo "Log level: ${{ inputs.logLevel }}"
+          echo "TAG source: ${{ inputs.tag }}"
+          echo "Environment: ${{ inputs.environment }}"
+        name: Workflow Inputs
+        if: ${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Checkout
         uses: actions/checkout@v4.2.2
