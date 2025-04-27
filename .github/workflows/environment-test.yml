@@ -1,0 +1,22 @@
+name: Environment Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - ci/*
+
+jobs:
+  live-job:
+    environment: LIVE
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ vars.ENV_VAL }}" >> $GITHUB_STEP_SUMMARY
+
+  dev-job:
+    environment: DEV
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ vars.ENV_VAL }}" >> $GITHUB_STEP_SUMMARY
