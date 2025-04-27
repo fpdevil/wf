@@ -20,14 +20,14 @@ jobs:
   consumber-of-odd-generator:
     needs: random-number-generator
     runs-on: ubuntu-latest
-    if: $(( needs.random-number-generator.outputs.is-even == 0 }}
+    if: ${{ needs.random-number-generator.outputs.is-even == 0 }}
     steps:
       - run: echo "The number is ${{ needs.random-number-generator.outputs.number }} is ODD"
 
   consumer-of-even-generators:
     needs: random-number-generator
     runs-on: ubuntu-latest
-    if: $(( needs.random-number-generator.outputs.is-even == 1 }}
+    if: ${{ needs.random-number-generator.outputs.is-even == 1 }}
     steps:
       - run: echo "The number is ${{ needs.random-number-generator.outputs.number }} is EVEN"
     
